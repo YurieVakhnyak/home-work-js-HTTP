@@ -3,18 +3,25 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    // main: path.resolve(__dirname, "./src/js/02-timer.js"),
-    main: path.resolve(__dirname, "./src/js/03-promises.js"),
+    main: path.resolve(__dirname, "./src/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].bundle.js",
   },
   mode: "development",
+  devServer: {
+    historyApiFallback: true,
+    // contentBase: path.resolve(__dirname, "./dist"),
+    open: true,
+    compress: true,
+    hot: false,
+    port: 8080,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       // template: path.resolve(__dirname, "./src/02-timer.html"), // template file
-      template: path.resolve(__dirname, "./src/03-promises.html"), // template file
+      template: path.resolve(__dirname, "./src/index.html"), // template file
       filename: "index.html", // output file
     }),
   ],
